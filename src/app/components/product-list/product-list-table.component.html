@@ -1,0 +1,14 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>Tytuł</th>
+      <th>Cena</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tempAlbum of albums">
+      <td>{{tempAlbum.albumTitle}}</td>
+      <td>{{tempAlbum.albumPrice | currency:"USD"}}</td>
+    </tr>
+  </tbody>
+</table>
