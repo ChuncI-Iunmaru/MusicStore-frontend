@@ -14,9 +14,20 @@ export class AlbumService {
   constructor(private httpClient: HttpClient) { }
 
   getAlbumList(): Observable<Album[]> {
-    return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
+    const searchUrl = this.baseUrl;
+    return this.getProducts(searchUrl);
+  }
+
+  private getProducts(searchUrl: string): Observable<Album[]> {
+    return this.httpClient.get<GetResponse>(searchUrl).pipe(
       map(res => res._embedded.albums)
     );
+  }
+
+  searchAlbums(theKeyword: string): Observable<Album[]> {
+    console.log("Wyszukiwanie albumów")
+    const searchUrl = `${this.baseUrl}/search/findByAlbumTitleContaining?title=${theKeyword}`;
+    return this.getProducts(searchUrl);
   }
 }
 

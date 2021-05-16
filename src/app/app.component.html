@@ -10,18 +10,19 @@
     <div class="menu-sidebar-content js-scrollbar1">
       <nav class="navbar-sidebar">
         <ul class="list-unstyled navbar-list">
-          <li>
-            <a href="#">Books</a>
-          </li>
-          <li>
-            <a href="#">Coffee Mugs</a>
-          </li>
-          <li>
-            <a href="#">Mouse Pads</a>
-          </li>
-          <li>
-            <a href="#">Luggage Tags</a>
-          </li>
+          Tu powinno być wyszukiwanie po artystach czy po gatunkach?
+<!--          <li>-->
+<!--            <a href="#">Books</a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a href="#">Coffee Mugs</a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a href="#">Mouse Pads</a>-->
+<!--          </li>-->
+<!--          <li>-->
+<!--            <a href="#">Luggage Tags</a>-->
+<!--          </li>-->
         </ul>
       </nav>
     </div>
@@ -35,13 +36,8 @@
       <div class="section-content section-content-p30">
         <div class="container-fluid">
           <div class="header-wrap">
-            <form class="form-header" onsubmit="return false;" method="GET">
-              <input class="au-input au-input-xl" type="text" name="search"
-                     placeholder="Wpisz tytuł ..."/>
-              <button class="au-btn-submit" type="submit">
-                Szukaj
-              </button>
-            </form>
+            <app-search></app-search>
+
             <div class="cart-area d-n">
               <a href="shopping-detail.html">
                 <div class="total">19.22 <span> 2</span></div>
@@ -56,7 +52,9 @@
     </header>
     <!-- END HEADER DESKTOP-->
     <!-- MAIN CONTENT-->
-    <app-product-list></app-product-list>
+    <router-outlet></router-outlet>
+    <!-- <app-product-list></app-product-list> -->
+
   </div>
 </div>
 

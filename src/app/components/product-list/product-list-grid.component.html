@@ -11,8 +11,12 @@
             <a href="#" class="primary-btn">Dodaj do koszyka</a>
           </div>
         </div>
+
+        <div *ngIf="albums?.length == 0" class="alert alert-warning col-md-12" role="alert">
+          Nie znaleziono żadnych albumów pasujących do hasła.
+        </div>
+
       </div>
     </div>
   </div>
-
 </div>
