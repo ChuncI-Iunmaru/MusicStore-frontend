@@ -1,6 +1,8 @@
 
 export class Album {
   // @ts-ignore
+  albumId: number;
+  // @ts-ignore
   albumTitle: string;
   // @ts-ignore
   albumYear: string;

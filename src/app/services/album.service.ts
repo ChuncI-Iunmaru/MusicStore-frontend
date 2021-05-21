@@ -29,6 +29,11 @@ export class AlbumService {
     const searchUrl = `${this.baseUrl}/search/findByAlbumTitleContaining?title=${theKeyword}`;
     return this.getProducts(searchUrl);
   }
+
+  getAlbum(theProductId: number): Observable<Album> {
+    const albumUrl = `${this.baseUrl}/${theProductId}`;
+    return this.httpClient.get<Album>(albumUrl);
+  }
 }
 
 interface GetResponse {

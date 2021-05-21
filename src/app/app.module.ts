@@ -8,8 +8,10 @@ import {AlbumService} from "./services/album.service";
 import { CurrencyPipe } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import { SearchComponent } from './components/search/search.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 const routes: Routes = [
+  {path: 'products/:id', component: ProductDetailComponent},
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'products', component: ProductListComponent},
   {path: '', redirectTo: '/products', pathMatch: 'full'},
@@ -20,7 +22,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ProductListComponent,
-    SearchComponent
+    SearchComponent,
+    ProductDetailComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

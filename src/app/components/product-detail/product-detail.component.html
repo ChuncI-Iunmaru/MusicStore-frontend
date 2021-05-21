@@ -1,0 +1,19 @@
+<div class="detail-section">
+  <div class="container-fluid">
+    <img src="assets/images/products/placeholder.png" class="detail-img">
+    <h3>{{album.albumTitle}} - {{album.albumYear}}</h3>
+    <div class="price">{{album.albumPrice | currency:'PLN'}}</div>
+    <a href="#" class="primary-btn">Dodaj do koszyka</a>
+    <hr>
+    <h5>Gatunki:</h5>
+    <span *ngFor="let g of album.genres" class="col-md-3">
+      <i>{{g.genreName}}, </i>
+    </span>
+    <br>
+    <span *ngFor="let g of album.subgenres" class="col-md-3">
+      <i>{{g.subgenreName}},</i>
+    </span>
+    <br>
+    <a routerLink="/products" class="mt-5">Wróć do katalogu</a>
+  </div>
+</div>

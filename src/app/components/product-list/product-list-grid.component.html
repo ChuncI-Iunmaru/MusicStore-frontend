@@ -5,8 +5,13 @@
         <!-- product looop -->
         <div *ngFor="let tmp of albums" class="col-md-3">
           <div class="product-box">
-            <img src="/assets/images/products/placeholder.png" class="img-responsive">
-            <h1>{{tmp.albumTitle}}</h1>
+            <a routerLink="/products/{{tmp.albumId}}">
+              <img src="/assets/images/products/placeholder.png" class="img-responsive">
+            </a>
+            <br>
+            <a routerLink="/products/{{tmp.albumId}}">
+              <h1>{{tmp.albumTitle}}</h1>
+            </a>
             <div class="price">{{tmp.albumPrice | currency:'PLN'}}</div>
             <a href="#" class="primary-btn">Dodaj do koszyka</a>
           </div>
