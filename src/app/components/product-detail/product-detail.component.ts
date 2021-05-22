@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Album} from "../../common/album";
 import {AlbumService} from "../../services/album.service";
 import {ActivatedRoute} from "@angular/router";
+import {CartService} from "../../services/cart.service";
+import {CartItem} from "../../common/cart-item";
 
 @Component({
   selector: 'app-product-detail',
@@ -11,7 +13,7 @@ import {ActivatedRoute} from "@angular/router";
 export class ProductDetailComponent implements OnInit {
   // @ts-ignore
   album: Album = new Album();
-  constructor(private albumService: AlbumService, private route: ActivatedRoute) { }
+  constructor(private albumService: AlbumService, private route: ActivatedRoute, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
@@ -30,4 +32,9 @@ export class ProductDetailComponent implements OnInit {
     )
   }
 
+  addToCart() {
+    console.log(`albumTitle=${this.album.albumTitle}, price=${this.album.albumPrice}`);
+    const cartItem = new CartItem(this.album);
+    this.cartService.addToCart(cartItem);
+  }
 }

@@ -3,7 +3,7 @@
     <img src="assets/images/products/placeholder.png" class="detail-img">
     <h3>{{album.albumTitle}} - {{album.albumYear}}</h3>
     <div class="price">{{album.albumPrice | currency:'PLN'}}</div>
-    <a href="#" class="primary-btn">Dodaj do koszyka</a>
+    <button (click)="addToCart()" class="btn btn-primary btn-sm">Dodaj do koszyka</button>
     <hr>
     <h5>Gatunki:</h5>
     <span *ngFor="let g of album.genres" class="col-md-3">

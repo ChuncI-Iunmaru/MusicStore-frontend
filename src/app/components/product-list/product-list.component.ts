@@ -3,6 +3,8 @@ import {AlbumService} from "../../services/album.service";
 import {Album} from "../../common/album";
 import {CurrencyPipe} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
+import {CartItem} from "../../common/cart-item";
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-product-list',
@@ -22,7 +24,10 @@ export class ProductListComponent implements OnInit {
   // @ts-ignore
   previousKeyword: string = null
 
-  constructor(private albumService: AlbumService, private currency: CurrencyPipe, private route: ActivatedRoute) {
+  constructor(private albumService: AlbumService,
+              private currency: CurrencyPipe,
+              private route: ActivatedRoute,
+              private cartService: CartService) {
   }
 
   ngOnInit(): void {
@@ -69,5 +74,11 @@ export class ProductListComponent implements OnInit {
       this.thePageSize = data.page.size;
       this.theTotalElements = data.page.totalElements;
     }
+  }
+
+  addToCart(album: Album) {
+    console.log(`albumTitle=${album.albumTitle}, price=${album.albumPrice}`);
+    const cartItem = new CartItem(album);
+    this.cartService.addToCart(cartItem);
   }
 }

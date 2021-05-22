@@ -1,0 +1,58 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <div *ngIf="cartItems.length > 0">
+        <table class="table table-bordered">
+          <tr>
+            <th width="20%">Okładka</th>
+            <th width="50%">Szczegóły</th>
+            <th width="30%"></th>
+          </tr>
+          <tr *ngFor="let tmp of cartItems">
+            <td>
+              <img src="assets/images/products/placeholder.png" class="img-responsive" width="150px">
+            </td>
+            <td>
+              <p>{{tmp.title}}</p>
+              <p>{{tmp.price.toFixed(2) | currency: 'PLN'}}</p>
+            </td>
+            <td>
+              <div class="items">
+                <label>Ilość:</label>
+                <div class="row no-gutters">
+                  <div class="col">
+                    <button (click)="incrementQuantity(tmp)" class="btn btn-primary btn-sm">
+                      <i class="fas fa-plus"></i>
+                    </button>
+                  </div>
+                  <div class="col ml-4 mr-2">
+                    {{tmp.quantity}}
+                  </div>
+                  <div class="col">
+                    <button (click)="decrementQuantity(tmp)" class="btn btn-primary btn-sm">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="col-8"></div>
+              </div>
+              <button (click)="removeFromCart(tmp)" class="btn btn-danger btn-sm mt-2">Usuń</button>
+              <p class="mt-2">Cena: {{(tmp.quantity * tmp.price ).toFixed(2)| currency: 'PLN'}}</p>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td style="font-weight: bold">
+              <p>Razem kopii: {{totalQuantity}}</p>
+              <p>Do zapłaty: {{totalPrice.toFixed(2)}}</p>
+              <a routerLink="/checkout" class="btn btn-success">Złóż zamówienie</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div *ngIf="cartItems.length == 0" class="alert alert-warning col-md-12" role="alert">
+        Twój koszyk jest pusty...
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,7 +13,7 @@
               <h1>{{tmp.albumTitle}}</h1>
             </a>
             <div class="price">{{tmp.albumPrice | currency:'PLN'}}</div>
-            <a href="#" class="primary-btn">Dodaj do koszyka</a>
+            <button (click)="addToCart(tmp)" class="btn btn-primary btn-sm">Dodaj do koszyka</button>
           </div>
         </div>
 
