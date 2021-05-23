@@ -14,6 +14,6 @@ export class RecommendationService {
   constructor(private httpClient: HttpClient) { }
 
   getTestRecommendations(albumId: number): Observable<AlbumWrapper[]> {
-    return this.httpClient.get<AlbumWrapper[]>(`${this.baseUrl}?id=${albumId}&size=${this.size}`);
+    return this.httpClient.get<AlbumWrapper[]>(`${this.baseUrl}/testRecommendations?id=${albumId}&size=${this.size}`);
   }
 }

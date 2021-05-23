@@ -15,7 +15,6 @@ import {CartStatusComponent} from './components/cart-status/cart-status.componen
 import {CartDetailsComponent} from './components/cart-details/cart-details.component';
 import {CheckoutComponent} from './components/checkout/checkout.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { RecComponentComponent } from './components/rec-component/rec-component.component';
 import { RecommendationComponent } from './components/recommendation/recommendation.component';
 
 const routes: Routes = [
@@ -37,7 +36,6 @@ const routes: Routes = [
     CartStatusComponent,
     CartDetailsComponent,
     CheckoutComponent,
-    RecComponentComponent,
     RecommendationComponent
   ],
   imports: [
