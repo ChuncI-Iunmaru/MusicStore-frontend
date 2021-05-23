@@ -2,6 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {StoreFormService} from "../../services/store-form.service";
 import {CustomValidator} from "../../validators/custom-validator";
+import {CartService} from "../../services/cart.service";
+import {CheckoutService} from "../../services/checkout.service";
+import {Router} from "@angular/router";
+import {Order} from "../../common/order";
+import {OrderItem} from "../../common/order-item";
+import {Purchase} from "../../common/purchase";
 
 @Component({
   selector: 'app-checkout',
@@ -9,7 +15,6 @@ import {CustomValidator} from "../../validators/custom-validator";
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-
 
   // @ts-ignore
   checkoutFormGroup: FormGroup;
@@ -19,7 +24,11 @@ export class CheckoutComponent implements OnInit {
   creditCardYears: number[] = [];
   creditCardMonths: number[] = [];
 
-  constructor(private formBuilder: FormBuilder, private formService: StoreFormService) {
+  constructor(private formBuilder: FormBuilder,
+              private formService: StoreFormService,
+              private cartService: CartService,
+              private checkoutService: CheckoutService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -58,30 +67,72 @@ export class CheckoutComponent implements OnInit {
       data => {
         console.log("Miesiące: " + JSON.stringify(data));
         this.creditCardMonths = data;
-      }
-    );
+      });
     this.formService.getCreditCardYears().subscribe(
       data => {
         console.log("Lata: " + JSON.stringify(data));
         this.creditCardYears = data;
-      }
-    )
+      });
+
+    this.reviewCartDetails();
   }
 
-  getFirstName() {return this.checkoutFormGroup.get('customer.firstName');}
-  getLastName() {return this.checkoutFormGroup.get('customer.lastName');}
-  getEmail() {return this.checkoutFormGroup.get('customer.email');}
+  getFirstName() {
+    return this.checkoutFormGroup.get('customer.firstName');
+  }
 
-  getNameOnCard() {return this.checkoutFormGroup.get('creditCardInformation.nameOnCard');}
-  getCardNumber() {return this.checkoutFormGroup.get('creditCardInformation.cardNumber');}
-  getSecurityCode() {return this.checkoutFormGroup.get('creditCardInformation.securityCode');}
+  getLastName() {
+    return this.checkoutFormGroup.get('customer.lastName');
+  }
+
+  getEmail() {
+    return this.checkoutFormGroup.get('customer.email');
+  }
+
+  getNameOnCard() {
+    return this.checkoutFormGroup.get('creditCardInformation.nameOnCard');
+  }
+
+  getCardNumber() {
+    return this.checkoutFormGroup.get('creditCardInformation.cardNumber');
+  }
+
+  getSecurityCode() {
+    return this.checkoutFormGroup.get('creditCardInformation.securityCode');
+  }
 
   onSubmit() {
     console.log("Złożono zamówienie")
     console.log(this.checkoutFormGroup.get('customer')?.value)
     if (this.checkoutFormGroup.invalid) {
       this.checkoutFormGroup.markAllAsTouched();
+      return;
     }
+    let order = new Order();
+    order.totalPrice = this.totalPrice;
+    order.totalQuantity = this.totalQuantity;
+
+    const cartItems = this.cartService.cartItems;
+    let orderItems: OrderItem[] = cartItems.map(tmp => new OrderItem(tmp));
+
+    let purchase = new Purchase();
+    purchase.customer = this.checkoutFormGroup.controls['customer'].value;
+
+    purchase.order = order;
+    purchase.orderItems = orderItems;
+
+    console.log(purchase);
+
+    this.checkoutService.placeOrder(purchase).subscribe(
+      {
+        next: response => {
+          alert(`Zamówienie złożone - kod ${response.orderTrackingNumber}. Oczekuj na email.`);
+          this.resetCart();
+        },
+        error: err => {
+          alert(`Złożenie zamówienie nie powiodło się. ${err.message}`);
+        }
+      });
   }
 
   handleMonthsAndYears() {
@@ -102,5 +153,26 @@ export class CheckoutComponent implements OnInit {
         this.creditCardMonths = data;
       }
     );
+  }
+
+  private reviewCartDetails() {
+    this.cartService.totalPrice.subscribe(data => {
+      console.log(`obecne totalPrice=${data}`);
+      this.totalPrice = data
+    });
+    this.cartService.totalQuantity.subscribe(data => {
+      console.log(`obecne totalQuantity=${data}`);
+      this.totalQuantity = data;
+    });
+  }
+
+  private resetCart() {
+    this.cartService.cartItems = [];
+    this.cartService.totalPrice.next(0);
+    this.cartService.totalQuantity.next(0);
+
+    this.checkoutFormGroup.reset();
+
+    this.router.navigateByUrl("/products");
   }
 }
