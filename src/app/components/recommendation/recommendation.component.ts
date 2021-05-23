@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {RecommendationService} from "../../services/recommendation.service";
 import {ActivatedRoute} from "@angular/router";
 import {AlbumWrapper} from "../../common/album-wrapper";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-recommendation',
@@ -10,11 +11,18 @@ import {AlbumWrapper} from "../../common/album-wrapper";
 })
 export class RecommendationComponent implements OnInit {
 
-  private recommendations: AlbumWrapper[] = [];
+  recommendations: AlbumWrapper[] = [];
+  modes: string[] = ['test1', "test2"];
+  currentMode: string = this.modes[0];
+  // @ts-ignore
+  modePicker: FormGroup;
 
-  constructor(private recService: RecommendationService, private route: ActivatedRoute) { }
+  constructor(private recService: RecommendationService, private route: ActivatedRoute, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.modePicker = this.formBuilder.group({
+      modeList: new FormControl('', [Validators.required])
+    });
     this.route.paramMap.subscribe(() => {
       this.handleRecommendation();
     })
@@ -28,5 +36,10 @@ export class RecommendationComponent implements OnInit {
       console.log(data);
       this.recommendations = data
     });
+  }
+
+  handleModeSwitch() {
+    console.log(`Zmiana wybranej wartości: ${this.modePicker.get('modeList')?.value}`);
+    this.currentMode = this.modePicker.get('modeList')?.value;
   }
 }
