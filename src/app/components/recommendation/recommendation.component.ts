@@ -12,7 +12,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 export class RecommendationComponent implements OnInit {
 
   recommendations: AlbumWrapper[] = [];
-  modes: string[] = ['test1', "test2"];
+  modes: string[] = ['Euclidean Distance on Genre', "Euclidean Distance on Subgenre", "Mixed euclid and artist"];
   currentMode: string = this.modes[0];
   // @ts-ignore
   modePicker: FormGroup;
@@ -31,15 +31,31 @@ export class RecommendationComponent implements OnInit {
   private handleRecommendation() {
     // @ts-ignore
     const currentAlbumId: number = +this.route.snapshot.paramMap.get('id');
-    this.recService.getTestRecommendations(currentAlbumId).subscribe(data => {
-      console.log('Zmiana rekomendowanych');
-      console.log(data);
-      this.recommendations = data
-    });
+    const modeIndex = this.modes.findIndex(mode => mode === this.currentMode);
+    if (modeIndex === 0) {
+      this.recService.getGenreEuclidRecommendations(currentAlbumId).subscribe(data => {
+        console.log('Zmiana rekomendowanych');
+        console.log(data);
+        this.recommendations = data
+      });
+    } else if (modeIndex === 1) {
+      this.recService.getSubgenreEuclidRecommendations(currentAlbumId).subscribe(data => {
+        console.log('Zmiana rekomendowanych');
+        console.log(data);
+        this.recommendations = data
+      });
+    } else if (modeIndex === 2) {
+      this.recService.getMixedRecommendations(currentAlbumId).subscribe(data => {
+        console.log('Zmiana rekomendowanych');
+        console.log(data);
+        this.recommendations = data
+      });
+    }
   }
 
   handleModeSwitch() {
     console.log(`Zmiana wybranej wartości: ${this.modePicker.get('modeList')?.value}`);
     this.currentMode = this.modePicker.get('modeList')?.value;
+    this.handleRecommendation();
   }
 }
