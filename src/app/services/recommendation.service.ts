@@ -28,4 +28,8 @@ export class RecommendationService {
   getMixedRecommendations(albumId: number): Observable<AlbumWrapper[]> {
     return this.httpClient.get<AlbumWrapper[]>(`${this.baseUrl}/mixedRecs?id=${albumId}&size=${this.size}`);
   }
+
+  getCosineRecommendations(albumId: number): Observable<AlbumWrapper[]> {
+    return this.httpClient.get<AlbumWrapper[]>(`${this.baseUrl}/cosineRecs?id=${albumId}&size=${this.size}`);
+  }
 }

@@ -12,7 +12,10 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 export class RecommendationComponent implements OnInit {
 
   recommendations: AlbumWrapper[] = [];
-  modes: string[] = ['Euclidean Distance on Genre', "Euclidean Distance on Subgenre", "Mixed euclid and artist"];
+  modes: string[] = [ 'Euclidean Distance on Genre',
+                      "Euclidean Distance on Subgenre",
+                      "Mixed euclid and artist",
+                      "Cosine similarity on Genre & Subgenre"];
   currentMode: string = this.modes[0];
   // @ts-ignore
   modePicker: FormGroup;
@@ -46,6 +49,12 @@ export class RecommendationComponent implements OnInit {
       });
     } else if (modeIndex === 2) {
       this.recService.getMixedRecommendations(currentAlbumId).subscribe(data => {
+        console.log('Zmiana rekomendowanych');
+        console.log(data);
+        this.recommendations = data
+      });
+    } else if (modeIndex === 3) {
+      this.recService.getCosineRecommendations(currentAlbumId).subscribe(data => {
         console.log('Zmiana rekomendowanych');
         console.log(data);
         this.recommendations = data
