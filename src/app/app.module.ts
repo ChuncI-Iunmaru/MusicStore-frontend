@@ -6,7 +6,7 @@ import {ProductListComponent} from './components/product-list/product-list.compo
 import {HttpClientModule} from "@angular/common/http";
 import {AlbumService} from "./services/album.service";
 import {CurrencyPipe} from '@angular/common';
-import {RouterModule, Routes} from "@angular/router";
+import {Router, RouterModule, Routes} from "@angular/router";
 import {SearchComponent} from './components/search/search.component';
 import {ProductDetailComponent} from './components/product-detail/product-detail.component';
 
@@ -16,8 +16,30 @@ import {CartDetailsComponent} from './components/cart-details/cart-details.compo
 import {CheckoutComponent} from './components/checkout/checkout.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { RecommendationComponent } from './components/recommendation/recommendation.component';
+import { LoginComponent } from './components/login/login.component';
+import { LoginStatusComponent } from './components/login-status/login-status.component';
+
+import {
+  OKTA_CONFIG,
+  OktaAuthModule,
+  OktaCallbackComponent
+} from "@okta/okta-angular";
+
+import myAppConfig from './config/my-app-config';
+
+
+const oktaConfig = Object.assign({
+  // @ts-ignore
+  onAuthRequired: (injector) => {
+    const router = injector.get(Router);
+
+    router.navigate(['/login']);
+  }
+}, myAppConfig.oidc);
 
 const routes: Routes = [
+  {path: 'login/callback', component: OktaCallbackComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'checkout', component: CheckoutComponent},
   {path: 'cart-details', component: CartDetailsComponent},
   {path: 'products/:id', component: ProductDetailComponent},
@@ -36,7 +58,9 @@ const routes: Routes = [
     CartStatusComponent,
     CartDetailsComponent,
     CheckoutComponent,
-    RecommendationComponent
+    RecommendationComponent,
+    LoginComponent,
+    LoginStatusComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -44,9 +68,10 @@ const routes: Routes = [
     HttpClientModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OktaAuthModule
   ],
-  providers: [AlbumService, CurrencyPipe],
+  providers: [AlbumService, CurrencyPipe, {provide: OKTA_CONFIG, useValue: oktaConfig}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
