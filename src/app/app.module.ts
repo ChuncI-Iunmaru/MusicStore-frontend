@@ -27,6 +27,7 @@ import {
 
 import myAppConfig from './config/my-app-config';
 import { UserPageComponent } from './components/user-page/user-page.component';
+import { UserRecommendationsComponent } from './components/user-recommendations/user-recommendations.component';
 
 
 const oktaConfig = Object.assign({
@@ -63,7 +64,8 @@ const routes: Routes = [
     RecommendationComponent,
     LoginComponent,
     LoginStatusComponent,
-    UserPageComponent
+    UserPageComponent,
+    UserRecommendationsComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -1,0 +1,40 @@
+<!---->
+<div class="section-content section-content-p30">
+  <div class="container-fluid">
+    <h3>Polecane dla ciebie</h3>
+    <form [formGroup]="modePicker" id="modePicker">
+      <label for="modePicker">Wybierz algorytm:     </label>
+      <select formControlName="modeList" (change)="handleModeSwitch()">
+        <option *ngFor="let mode of modes">{{mode}}</option>
+      </select>
+    </form>
+    <hr>
+    <div>
+      <div class="row">
+        <!-- product looop -->
+        <div *ngFor="let tmp of recommendations" class="col-sm-2">
+
+          <div class="product-box">
+            <div class="row">
+              <!--          Wewnątrz tego chcę mieć dwie kolumny-->
+              <div class="col-sm-5">
+                <a routerLink="/products/{{tmp.album.albumId}}">
+                  <img src="/assets/images/products/placeholder.png" class="img-responsive">
+                </a>
+                <a routerLink="/products/{{tmp.album.albumId}}">
+                  <p class="font-weight-bold small text-center">{{tmp.album.albumTitle}}</p>
+                </a>
+              </div>
+              <div class="col-sm-5">
+                <div class="small">{{tmp.album.albumYear}}</div>
+                <div class="font-weight-light small"><i>Miara: {{tmp.similarityValue.toFixed(5)}}</i></div>
+                <div class="price">{{tmp.album.albumPrice | currency:'PLN'}}</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -32,4 +32,8 @@ export class RecommendationService {
   getCosineRecommendations(albumId: number): Observable<AlbumWrapper[]> {
     return this.httpClient.get<AlbumWrapper[]>(`${this.baseUrl}/cosineRecs?id=${albumId}&size=${this.size}`);
   }
+
+  getDummyUserRecommendations(userId: number): Observable<AlbumWrapper[]>{
+    return this.httpClient.get<AlbumWrapper[]>(`${this.baseUrl}/dummyUserRecs?id=${userId}&size=${this.size}`);
+  }
 }
