@@ -1,7 +1,30 @@
 <div class="main-content">
-  <div align="center" class="alert alert-warning col-md-12" role="alert">
-    <h3>Tylko dla zarejstrowanych użytkowników</h3>
-    <p>Dziękujemy za skorzystanie ze sklepu</p>
-    <p>Content coming soon(TM)</p>
+
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <h3>Historia zamówień</h3>
+      <div *ngIf="orderHistoryList.length > 0">
+        <table class="table table-bordered">
+          <tr>
+            <th width="20%">Numer zamówienia</th>
+            <th width="10%">Cena</th>
+            <th width="10%">Ilość</th>
+            <th width="10%">Data złożenia</th>
+          </tr>
+          <tr *ngFor="let tmp of orderHistoryList">
+            <td>{{tmp.orderTrackingNumber}}</td>
+            <td>{{tmp.totalPrice | currency: 'PLN'}}</td>
+            <td>{{tmp.totalQuantity}}</td>
+            <td>{{tmp.dateCreated | date: 'medium' }}</td>
+          </tr>
+        </table>
+      </div>
+      <!--      Warning jak nie ma zamówień-->
+      <div *ngIf="orderHistoryList.length == 0" class="alert alert-warning col-md-12" role="alert">
+        Nie masz żadnych zamówień.
+      </div>
+    </div>
   </div>
+
+
 </div>
