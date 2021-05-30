@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <!-- product looop -->
+  <div *ngFor="let tmp of recommendations">
+    <div class="product-box">
+      <div class="row">
+        <a routerLink="/products/{{tmp.album.albumId}}">
+          <img src="/assets/images/products/placeholder.png" class="img-responsive">
+        </a>
+        <a routerLink="/products/{{tmp.album.albumId}}">
+          <p class="font-weight-bold small">{{tmp.album.albumTitle}}</p>
+        </a>
+        <div class="font-weight-light small"><i>Sprzedaż: {{tmp.similarityValue.toFixed(5)}}</i></div>
+        <div class="price">{{tmp.album.albumPrice | currency:'PLN'}}</div>
+      </div>
+    </div>
+
+  </div>
+</div>

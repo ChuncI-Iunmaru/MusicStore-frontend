@@ -28,7 +28,7 @@ export class UserRecommendationsComponent implements OnInit {
 
   private handleRecommendations() {
     // Docelowo tu wyłuskać id zalogowenego usera/customera ze storage
-    const currentUserId = 3;
+    const currentUserId = 2;
     const modeIndex = this.modes.findIndex(mode => mode === this.currentMode);
     if (modeIndex === 0) {
       this.recService.getDummyUserRecommendations(currentUserId).subscribe(data => {

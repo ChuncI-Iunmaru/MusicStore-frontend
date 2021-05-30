@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AlbumWrapper} from "../common/album-wrapper";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
@@ -11,7 +11,8 @@ export class RecommendationService {
   private baseUrl: string = 'http://localhost:8080/api/rec'
   private size: number = 5;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
   getTestRecommendations(albumId: number): Observable<AlbumWrapper[]> {
     return this.httpClient.get<AlbumWrapper[]>(`${this.baseUrl}/testRecommendations?id=${albumId}&size=${this.size}`);
@@ -33,7 +34,11 @@ export class RecommendationService {
     return this.httpClient.get<AlbumWrapper[]>(`${this.baseUrl}/cosineRecs?id=${albumId}&size=${this.size}`);
   }
 
-  getDummyUserRecommendations(userId: number): Observable<AlbumWrapper[]>{
+  getDummyUserRecommendations(userId: number): Observable<AlbumWrapper[]> {
     return this.httpClient.get<AlbumWrapper[]>(`${this.baseUrl}/dummyUserRecs?id=${userId}&size=${this.size}`);
+  }
+
+  getRecentBestsellers(): Observable<AlbumWrapper[]> {
+    return this.httpClient.get<AlbumWrapper[]>(`${this.baseUrl}/recentBestsellers?size=${this.size}`);
   }
 }
