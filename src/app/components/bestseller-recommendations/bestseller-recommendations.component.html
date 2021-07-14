@@ -4,7 +4,7 @@
     <div class="product-box">
       <div class="row">
         <a routerLink="/products/{{tmp.album.albumId}}">
-          <img src="/assets/images/products/placeholder.png" class="img-responsive">
+          <img src="{{tmp.album.imageUrl === 'none' ? '/assets/images/products/placeholder.png' : tmp.album.imageUrl}}" class="img-responsive">
         </a>
         <a routerLink="/products/{{tmp.album.albumId}}">
           <p class="font-weight-bold small">{{tmp.album.albumTitle}}</p>

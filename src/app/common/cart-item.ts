@@ -5,6 +5,7 @@ export class CartItem {
   id: number;
   title: string;
   price: number;
+  imageUrl: string
 
   quantity: number;
 
@@ -12,6 +13,7 @@ export class CartItem {
     this.id = album.albumId;
     this.title = album.albumTitle;
     this.price = album.albumPrice;
+    this.imageUrl = album.imageUrl;
     this.quantity = 1
   }
 }

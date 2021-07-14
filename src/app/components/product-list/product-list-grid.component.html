@@ -6,7 +6,7 @@
         <div *ngFor="let tmp of albums" class="col-md-3">
           <div class="product-box">
             <a routerLink="/products/{{tmp.albumId}}">
-              <img src="/assets/images/products/placeholder.png" class="img-responsive">
+              <img src="{{tmp.imageUrl === 'none' ? '/assets/images/products/placeholder.png' : tmp.imageUrl}}" class="img-responsive">
             </a>
             <br>
             <a routerLink="/products/{{tmp.albumId}}">

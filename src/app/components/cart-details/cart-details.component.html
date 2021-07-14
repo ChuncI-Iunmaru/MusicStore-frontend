@@ -10,7 +10,7 @@
           </tr>
           <tr *ngFor="let tmp of cartItems">
             <td>
-              <img src="assets/images/products/placeholder.png" class="img-responsive" width="150px">
+              <img src="{{tmp.imageUrl === 'none' ? '/assets/images/products/placeholder.png' : tmp.imageUrl}}" class="img-responsive" width="150px">
             </td>
             <td>
               <p>{{tmp.title}}</p>

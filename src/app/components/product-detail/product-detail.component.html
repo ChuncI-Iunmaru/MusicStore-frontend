@@ -1,6 +1,6 @@
 <div class="detail-section">
   <div class="container-fluid">
-    <img src="assets/images/products/placeholder.png" class="detail-img">
+    <img src="{{album.imageUrl === 'none' ? '/assets/images/products/placeholder.png' : album.imageUrl}}" class="detail-img">
     <h3>{{album.albumTitle}} - {{album.albumYear}}</h3>
     <div class="price">{{album.albumPrice | currency:'PLN'}}</div>
     <button (click)="addToCart()" class="btn btn-primary btn-sm">Dodaj do koszyka</button>
