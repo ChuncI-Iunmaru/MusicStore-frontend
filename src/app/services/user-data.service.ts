@@ -1,25 +1,30 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {OktaAuthService} from "@okta/okta-angular";
+import {BehaviorSubject, Observable, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserDataService {
-  isAuthenticated: boolean = false;
   // @ts-ignore
-  isEmployee: boolean;
+  private isEmployee: BehaviorSubject<boolean>;
 
   constructor() {
-    this.isEmployee = false;
+    this.isEmployee = new BehaviorSubject<boolean>(false);
   }
 
-  employeeLoggedIn(){
+  employeeLoggedIn() {
     console.log("Pracownik zalogowany")
-    this.isEmployee = true;
+    this.isEmployee.next(true);
   }
 
-  employeeLoggedOut(){
+  employeeLoggedOut() {
     console.log("Pracownik wylogowany")
-    this.isEmployee = false;
+    this.isEmployee.next(false);
+  }
+
+  getObservableStatus(): Observable<boolean> {
+    console.log("Zmiana statusu pracownika");
+    return this.isEmployee.asObservable();
   }
 }

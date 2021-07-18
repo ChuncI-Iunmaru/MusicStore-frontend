@@ -40,7 +40,11 @@ export class LoginStatusComponent implements OnInit {
           const role = res.Groups.find((group: string) => group === 'Pracownik');
           if (role === 'Pracownik') {
             this.userDataService.employeeLoggedIn();
-          } else this.userDataService.employeeLoggedOut();
+            this.isEmployee = true;
+          } else {
+            this.userDataService.employeeLoggedOut()
+            this.isEmployee = false;
+          }
         });
     }
   }

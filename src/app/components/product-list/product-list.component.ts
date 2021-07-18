@@ -5,6 +5,7 @@ import {CurrencyPipe} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 import {CartItem} from "../../common/cart-item";
 import {CartService} from "../../services/cart.service";
+import {UserDataService} from "../../services/user-data.service";
 
 @Component({
   selector: 'app-product-list',
@@ -24,15 +25,23 @@ export class ProductListComponent implements OnInit {
   // @ts-ignore
   previousKeyword: string = null
 
+  // @ts-ignore
+  isEmployee: boolean;
+
   constructor(private albumService: AlbumService,
               private currency: CurrencyPipe,
               private route: ActivatedRoute,
-              private cartService: CartService) {
+              private cartService: CartService,
+              private userDataService: UserDataService) {
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
       this.listProducts();
+    });
+    this.userDataService.getObservableStatus().subscribe(value => {
+      this.isEmployee = value;
+      console.log(`isEmployee = ${this.isEmployee}`)
     });
   }
 

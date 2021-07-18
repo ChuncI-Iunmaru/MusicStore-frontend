@@ -43,7 +43,8 @@ const oktaConfig = Object.assign({
 }, myAppConfig.oidc);
 
 const routes: Routes = [
-  {path: 'userPage', component: UserPageComponent, canActivate: [AuthGuardEmployeeService]},
+  {path: 'crudPage', component: CrudPageComponent, canActivate: [AuthGuardEmployeeService]},
+  {path: 'userPage', component: UserPageComponent, canActivate: [OktaAuthGuard]},
   {path: 'login/callback', component: OktaCallbackComponent},
   {path: 'login', component: LoginComponent},
   {path: 'checkout', component: CheckoutComponent},

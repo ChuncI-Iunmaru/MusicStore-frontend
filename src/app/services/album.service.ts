@@ -10,6 +10,7 @@ import {map} from "rxjs/operators";
 export class AlbumService {
 
   private baseUrl = "http://localhost:8080/api/albums";
+  private crudUrl = "http://localhost:8080/api/crud/album";
 
   constructor(private httpClient: HttpClient) {
   }
@@ -45,6 +46,22 @@ export class AlbumService {
   getAlbum(theProductId: number): Observable<Album> {
     const albumUrl = `${this.baseUrl}/${theProductId}`;
     return this.httpClient.get<Album>(albumUrl);
+  }
+
+  deleteAlbum(albumId: number): void {
+    const deleteUrl = `${this.crudUrl}/delete?id=${albumId}`;
+    console.log(`Usuwam ${deleteUrl}`)
+    this.httpClient.delete(deleteUrl);
+  }
+
+  addAlbum(album: Album): void {
+    const addUrl = `${this.crudUrl}/create`
+    console.log(`Dodaje ${this.httpClient.post(addUrl, JSON.stringify(album))}`);
+  }
+
+  updateAlbum(album: Album): void {
+    const updateUrl = `${this.crudUrl}/update`
+    console.log(`Aktualizuje ${this.httpClient.post(updateUrl, JSON.stringify(album))}`);
   }
 }
 
