@@ -29,6 +29,8 @@ import myAppConfig from './config/my-app-config';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { UserRecommendationsComponent } from './components/user-recommendations/user-recommendations.component';
 import { BestsellerRecommendationsComponent } from './components/bestseller-recommendations/bestseller-recommendations.component';
+import {AuthGuardEmployeeService} from "./services/auth-guard-employee.service";
+import { CrudPageComponent } from './components/crud-page/crud-page.component';
 
 
 const oktaConfig = Object.assign({
@@ -41,7 +43,7 @@ const oktaConfig = Object.assign({
 }, myAppConfig.oidc);
 
 const routes: Routes = [
-  {path: 'userPage', component: UserPageComponent, canActivate: [OktaAuthGuard]},
+  {path: 'userPage', component: UserPageComponent, canActivate: [AuthGuardEmployeeService]},
   {path: 'login/callback', component: OktaCallbackComponent},
   {path: 'login', component: LoginComponent},
   {path: 'checkout', component: CheckoutComponent},
@@ -67,7 +69,8 @@ const routes: Routes = [
     LoginStatusComponent,
     UserPageComponent,
     UserRecommendationsComponent,
-    BestsellerRecommendationsComponent
+    BestsellerRecommendationsComponent,
+    CrudPageComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

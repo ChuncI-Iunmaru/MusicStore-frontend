@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
       // @ts-ignore
       (response) => {
         if (response.status === 'SUCCESS') {
+          console.log(response)
           this.oktaAuthService.signInWithRedirect();
         }
       },
