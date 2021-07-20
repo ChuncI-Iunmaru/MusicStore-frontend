@@ -13,4 +13,6 @@ export class Album {
   subgenres: Array<{subgenreName: string}>;
   // @ts-ignore
   imageUrl: string;
+  // @ts-ignore
+  artistName: string;
 }
