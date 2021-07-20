@@ -60,22 +60,34 @@ export class CrudPageComponent implements OnInit {
         subgenreC: ['']
       })
     })
+
+    // Populate genres and subgenres
+    this.albumService.getGenres().subscribe(
+      data => {
+        this.genres = data;
+        this.genres.unshift('-');
+      });
+    this.albumService.getSubgenres().subscribe(
+      data => {
+        this.subgenres = data;
+        this.subgenres.unshift('-');
+      });
   }
 
   getTitle() {
-    return this.albumFormGroup.get('album.title');
+    return this.albumFormGroup.get('albumInfo.title');
   }
 
   getArtistName() {
-    return this.albumFormGroup.get('album.artistName');
+    return this.albumFormGroup.get('albumInfo.artistName');
   }
 
   getImageUrl() {
-    return this.albumFormGroup.get('album.imageUrl');
+    return this.albumFormGroup.get('albumInfo.imageUrl');
   }
 
   getYear() {
-    return this.albumFormGroup.get('album.year');
+    return this.albumFormGroup.get('albumInfo.year');
   }
 
   onSubmit() {

@@ -48,6 +48,16 @@ export class AlbumService {
     return this.httpClient.get<Album>(albumUrl);
   }
 
+  getGenres(): Observable<string[]> {
+    const genreUrl = `${this.crudUrl}/genreNames`;
+    return this.httpClient.get<string[]>(genreUrl);
+  }
+
+  getSubgenres(): Observable<string[]> {
+    const subgenreUrl = `${this.crudUrl}/subgenreNames`;
+    return this.httpClient.get<string[]>(subgenreUrl);
+  }
+
   deleteAlbum(albumId: number): void {
     const deleteUrl = `${this.crudUrl}/delete?id=${albumId}`;
     console.log(`Usuwam ${deleteUrl}`)

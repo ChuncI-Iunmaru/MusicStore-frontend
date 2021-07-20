@@ -14,7 +14,7 @@
               <div class="input-space">
                 <input formControlName="title" type="text">
                 <div *ngIf="getTitle()!.invalid && (getTitle()!.dirty || getTitle()!.touched)" class="alert alert-danger">
-                  <div *ngIf="getTitle()!.errors!.required || getTitle()!.errors!.notOnlyWhitespace">Wprowadź imię!</div>
+                  <div *ngIf="getTitle()!.errors!.required || getTitle()!.errors!.notOnlyWhitespace">Wprowadź tytuł!</div>
                   <div *ngIf="getTitle()!.errors!.minlength">Musi mieć co najmniej 2 znaki!</div>
                 </div>
               </div>
@@ -44,7 +44,7 @@
               <div class="input-space">
                 <input formControlName="artistName" type="text">
                 <div *ngIf="getImageUrl()!.invalid && (getImageUrl()!.dirty || getImageUrl()!.touched)" class="alert alert-danger">
-                  <div *ngIf="getImageUrl()!.errors!.required || getImageUrl()!.errors!.notOnlyWhitespace">Wprowadź imię!</div>
+                  <div *ngIf="getImageUrl()!.errors!.required || getImageUrl()!.errors!.notOnlyWhitespace">Wprowadź nazwę zespołu!</div>
                   <div *ngIf="getImageUrl()!.errors!.minlength">Musi mieć co najmniej 2 znaki!</div>
                 </div>
               </div>
@@ -60,7 +60,7 @@
                 <input formControlName="year" type="text">
                 <div *ngIf="getYear()!.invalid && (getYear()!.dirty || getYear()!.touched)" class="alert alert-danger">
                   <div *ngIf="getYear()!.errors!.required">Wprowadź numer karty!</div>
-                  <div *ngIf="getYear()!.errors!.pattern || getYear()!.errors!.minlength || getYear()!.errors!.maxlength">Wprowadź prawidłowy numer karty!</div>
+                  <div *ngIf="getYear()!.errors!.pattern || getYear()!.errors!.minlength || getYear()!.errors!.maxlength">Wprowadź prawidłowy rok wydania!</div>
                 </div>
               </div>
             </div>
