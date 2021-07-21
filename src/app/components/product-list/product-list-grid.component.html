@@ -15,7 +15,7 @@
             <div class="price">{{tmp.albumPrice | currency:'PLN'}}</div>
             <button *ngIf="!isEmployee" (click)="addToCart(tmp)" class="btn btn-primary btn-sm">Dodaj do koszyka</button>
             <button *ngIf="isEmployee" routerLink="/crudPage/{{tmp.albumId}}" class="btn btn-success btn-sm">Edytuj</button>
-            <button *ngIf="isEmployee" class="btn btn-danger btn-sm">Usuń</button>
+            <button *ngIf="isEmployee" (click)="deleteAlbum(tmp.albumId)" class="btn btn-danger btn-sm">Usuń</button>
           </div>
         </div>
 

@@ -63,10 +63,10 @@ export class AlbumService {
     return this.httpClient.get(artistUrl, {observe: 'body', responseType: "text"});
   }
 
-  deleteAlbum(albumId: number): void {
+  deleteAlbum(albumId: number): Observable<number> {
     const deleteUrl = `${this.crudUrl}/delete?id=${albumId}`;
     console.log(`Usuwam ${deleteUrl}`)
-    this.httpClient.delete(deleteUrl);
+    return this.httpClient.delete<number>(deleteUrl);
   }
 
   addAlbum(album: Album): Observable<number> {

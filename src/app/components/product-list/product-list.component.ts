@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AlbumService} from "../../services/album.service";
 import {Album} from "../../common/album";
 import {CurrencyPipe} from "@angular/common";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {CartItem} from "../../common/cart-item";
 import {CartService} from "../../services/cart.service";
 import {UserDataService} from "../../services/user-data.service";
@@ -32,7 +32,8 @@ export class ProductListComponent implements OnInit {
               private currency: CurrencyPipe,
               private route: ActivatedRoute,
               private cartService: CartService,
-              private userDataService: UserDataService) {
+              private userDataService: UserDataService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -89,5 +90,12 @@ export class ProductListComponent implements OnInit {
     console.log(`albumTitle=${album.albumTitle}, price=${album.albumPrice}`);
     const cartItem = new CartItem(album);
     this.cartService.addToCart(cartItem);
+  }
+
+  deleteAlbum(id: number){
+    this.albumService.deleteAlbum(id).subscribe(result => {
+      console.log('Usunięto album ' + result);
+      this.listProducts();
+    })
   }
 }
