@@ -58,20 +58,27 @@ export class AlbumService {
     return this.httpClient.get<string[]>(subgenreUrl);
   }
 
+  getArtistName(theProductId: number): Observable<string> {
+    const artistUrl = `${this.crudUrl}/artistNameForAlbum?id=${theProductId}`;
+    return this.httpClient.get(artistUrl, {observe: 'body', responseType: "text"});
+  }
+
   deleteAlbum(albumId: number): void {
     const deleteUrl = `${this.crudUrl}/delete?id=${albumId}`;
     console.log(`Usuwam ${deleteUrl}`)
     this.httpClient.delete(deleteUrl);
   }
 
-  addAlbum(album: Album): void {
+  addAlbum(album: Album): Observable<number> {
     const addUrl = `${this.crudUrl}/create`
-    console.log(`Dodaje ${this.httpClient.post(addUrl, JSON.stringify(album))}`);
+    console.log(`Dodaje ${JSON.stringify(album)}`);
+    return this.httpClient.post<number>(addUrl, album);
   }
 
-  updateAlbum(album: Album): void {
+  updateAlbum(album: Album): Observable<number> {
     const updateUrl = `${this.crudUrl}/update`
-    console.log(`Aktualizuje ${this.httpClient.post(updateUrl, JSON.stringify(album))}`);
+    console.log(`Aktualizuje ${JSON.stringify(album)}`);
+    return this.httpClient.post<number>(updateUrl, album);
   }
 }
 

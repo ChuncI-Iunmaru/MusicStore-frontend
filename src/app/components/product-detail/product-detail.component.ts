@@ -28,8 +28,7 @@ export class ProductDetailComponent implements OnInit {
     this.albumService.getAlbum(theProductId).subscribe(
       data => {
         this.album = data;
-      }
-    )
+      })
   }
 
   addToCart() {

@@ -42,7 +42,7 @@
             </div>
             <div class="col-md-9">
               <div class="input-space">
-                <input formControlName="artistName" type="text">
+                <input formControlName="imageUrl" type="text">
                 <div *ngIf="getImageUrl()!.invalid && (getImageUrl()!.dirty || getImageUrl()!.touched)" class="alert alert-danger">
                   <div *ngIf="getImageUrl()!.errors!.required || getImageUrl()!.errors!.notOnlyWhitespace">Wprowadź nazwę zespołu!</div>
                   <div *ngIf="getImageUrl()!.errors!.minlength">Musi mieć co najmniej 2 znaki!</div>
@@ -59,8 +59,23 @@
               <div class="input-space">
                 <input formControlName="year" type="text">
                 <div *ngIf="getYear()!.invalid && (getYear()!.dirty || getYear()!.touched)" class="alert alert-danger">
-                  <div *ngIf="getYear()!.errors!.required">Wprowadź numer karty!</div>
+                  <div *ngIf="getYear()!.errors!.required">Wprowadź rok wydania!</div>
                   <div *ngIf="getYear()!.errors!.pattern || getYear()!.errors!.minlength || getYear()!.errors!.maxlength">Wprowadź prawidłowy rok wydania!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2">
+              <label>Cena</label>
+            </div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="price" type="text">
+                <div *ngIf="getPrice()!.invalid && (getPrice()!.dirty || getPrice()!.touched)" class="alert alert-danger">
+                  <div *ngIf="getPrice()!.errors!.required">Wprowadź cenę!</div>
+                  <div *ngIf="getPrice()!.errors!.pattern || getPrice()!.errors!.minlength || getPrice()!.errors!.maxlength">Wprowadź prawidłową liczbę XX.XX!</div>
                 </div>
               </div>
             </div>

@@ -8,9 +8,9 @@ export class Album {
   // @ts-ignore
   albumPrice: number;
   // @ts-ignore
-  genres: Array<{genreName: string}>;
+  genres: Array<{genreName: string}> = [];
   // @ts-ignore
-  subgenres: Array<{subgenreName: string}>;
+  subgenres: Array<{subgenreName: string}> = [];
   // @ts-ignore
   imageUrl: string;
   // @ts-ignore
