@@ -7,9 +7,12 @@
           <img src="{{tmp.album.imageUrl === 'none' ? '/assets/images/products/placeholder.png' : tmp.album.imageUrl}}" class="img-responsive">
         </a>
         <a routerLink="/products/{{tmp.album.albumId}}">
-          <p class="font-weight-bold small">{{tmp.album.albumTitle}}</p>
+          <div class="font-weight-bold small">{{tmp.album.albumTitle}}</div>
         </a>
-        <div class="font-weight-light small"><i>Sprzedaż: {{tmp.similarityValue.toFixed(5)}}</i></div>
+        <div class="font-weight-light small">
+          <br>
+          <i>Sprzedaż: {{tmp.similarityValue.toFixed(0)}}</i>
+        </div>
         <div class="price">{{tmp.album.albumPrice | currency:'PLN'}}</div>
       </div>
     </div>
