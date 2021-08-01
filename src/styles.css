@@ -44,6 +44,15 @@ button{
   background:0 0
 }
 
+.btn-link{
+  background: #f09f12 !important;
+}
+
+.btn-primary{
+  background: #f09f12 !important;
+  border: #f09f12 !important;
+}
+
 img{
   max-width:100%;
   height:auto
@@ -85,10 +94,12 @@ h6{
 }
 
 a{
+  color: #9a1b15 !important;
   display:inline-block
 }
 
 a:active,a:focus,a:hover{
+  color: #671406 !important;
   text-decoration:none;
   outline:0
 }
@@ -135,7 +146,7 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
  */
 
 .header-desktop{
-  background:#0da8e4;
+  background:#fed20f;
   -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
   -moz-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
   box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
@@ -251,11 +262,11 @@ input.au-input.au-input-xl{
 }
 
 .total{
-  background:#205b8d;
+  background:#f09f12;
   line-height:43px;
   color:#fff;
   border-radius:30px;
-  border:1px solid #0da8e4;
+  border:1px solid #fed20f;
   float:left;
   margin-top:7px;
   padding-left:17px
@@ -284,15 +295,15 @@ input.au-input.au-input-xl{
   right:0;
   min-width:95px;
   color:#fff;
-  border:1px solid #205b8d;
+  border:1px solid #f09f12;
   -webkit-border-radius:3px;
   -moz-border-radius:3px;
   border-radius:43px;
-  background:#205b8d
+  background:#f09f12
 }
 
 .au-btn-submit:hover{
-  background:#05143f
+  background:#4f1c05
 }
 
 .au-btn-submit>i{
@@ -379,7 +390,7 @@ input.au-input.au-input-xl{
 }
 
 .navbar-sidebar .navbar-list li a:hover{
-  color:#0da8e4
+  color:#fed20f
 }
 
 /*
@@ -482,7 +493,7 @@ input.au-input.au-input-xl{
   line-height:inherit
 }
 .header-mobile .navbar-mobile .navbar-mobile-list li a:hover{
-  color:#0da8e4
+  color:#fed20f
 }
 .header-mobile .navbar-mobile .navbar-mobile-list li a>i{
   margin-right:19px
@@ -543,7 +554,7 @@ input.au-input.au-input-xl{
 .price{
   margin:15px 0 0;
   font-weight:800;
-  color:#0da8e4
+  color:#fed20f
 }
 .product-box h1{
   font-size:18px;
@@ -656,7 +667,7 @@ label.date{
   top:-1px;
   width:9px;
   height:15px;
-  border:solid #0da8e4;
+  border:solid #fed20f;
   border-width:0 4px 4px 0;
   -webkit-border-radius:2px;
   -moz-border-radius:2px;
@@ -691,7 +702,7 @@ table.table.table-bordered{
   border:1px solid #dee2e6
 }
 table.table.table-bordered th{
-  BACKGROUND:#0da8e4;
+  BACKGROUND:#fed20f;
   color:#fff;
   font-size:14px;
   padding:7px
@@ -718,7 +729,7 @@ table.table.table-bordered th{
 .price{
   margin:15px 0 0;
   font-weight:800;
-  color:#0da8e4
+  color:#fed20f
 }
 .detail-section{
   margin-top:60px
@@ -737,11 +748,11 @@ table.table.table-bordered th{
 
 .btn-info{
   color:#fff;
-  background-color:#0da8e4!important;
-  border-color:#0da8e4!important
+  background-color:#fed20f!important;
+  border-color:#fed20f!important
 }
 a.primary-btn{
-  background:#05143f;
+  background:#4f1c05;
   padding:7px 20px;
   text-align:center;
   display:inline-block;
@@ -751,7 +762,7 @@ a.primary-btn{
   margin-top:5px
 }
 a.primary-btn:hover{
-  background:#0da8e4;
+  background:#fed20f;
   color:#fff
 }
 
@@ -826,7 +837,7 @@ footer ul li{
     font-size:22px;
     float:left;
     margin-top:16px;
-    color:#205b8d;
+    color:#f09f12;
     margin-left:15px
   }
   .header-mobile .header-mobile-bar{
@@ -921,7 +932,7 @@ footer ul li{
     font-size:22px;
     float:left;
     margin-top:16px;
-    color:#205b8d;
+    color:#f09f12;
     margin-left:15px
   }
   .header-wrap2{
@@ -972,14 +983,14 @@ footer ul li{
     font-size:22px;
     float:left;
     margin-top:16px;
-    color:#205b8d;
+    color:#f09f12;
     margin-left:15px
   }
   .footer-pagination{
     text-align:center
   }
   .product-box{
-    text-align:centerg
+    text-align:center
   }
   .page-container{
     position:relative;
@@ -991,11 +1002,11 @@ footer ul li{
     right:10px;
     min-width:85px;
     color:#fff;
-    border:1px solid #205b8d;
+    border:1px solid #f09f12;
     -webkit-border-radius:3px;
     -moz-border-radius:3px;
     border-radius:0;
-    background:#205b8d
+    background:#f09f12
   }
   input.au-input.au-input-xl{
     border-radius:0!important;
@@ -1024,11 +1035,11 @@ footer ul li{
     margin-left:6px
   }
   .total{
-    background:#205b8d;
+    background:#f09f12;
     line-height:30px;
     color:#fff;
     border-radius:30px;
-    border:1px solid #205b8d;
+    border:1px solid #f09f12;
     float:left;
     margin-top:9px;
     padding-left:12px
@@ -1038,5 +1049,17 @@ footer ul li{
     background:#fff;
     border:0;
     padding:8px 0
+  }
+
+  .page-item{
+    display:none;
+    color: #f09f12 !important;
+    background-color: #f09f12 !important;
+  }
+  .page-item:nth-child(1){
+    display:block;
+  }
+  .page-item:last-child{
+    display:block;
   }
 }
