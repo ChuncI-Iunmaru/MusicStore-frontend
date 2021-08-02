@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <form [formGroup]="yearFormGroup" (ngSubmit)="handleYearChange()">
+    <div formGroupName="yearInformation" class="form-area d-flex p-2 justify-content-center">
+      <div class="input-space w-25">
+        <select formControlName="year">
+          <option *ngFor="let y of years">{{y}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-info">Wczytaj dane</button>
+    </div>
+  </form>
+  <hr>
+  <h3>Miesięczna sprzedaż</h3>
+  <div *ngIf="salesData.length > 0">
+    <ngx-charts-bar-vertical
+      [view]="[1000,400]"
+      [results]="salesData"
+      [xAxisLabel]="'Miesiąc'"
+      [legendTitle]="'Legenda'"
+      [yAxisLabel]="'Sprzedane albumy'"
+      [legend]="true"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [xAxis]="true"
+      [yAxis]="true"
+      [gradient]="true"
+      [scheme]="colorScheme">
+    </ngx-charts-bar-vertical>
+  </div>
+  <hr>
+  <br>
+  <h3>Miesięczne dochody</h3>
+  <br>
+  <div *ngIf="profitsData.length > 0">
+    <ngx-charts-bar-horizontal
+      [view]="[1000,400]"
+      [results]="profitsData"
+      [xAxisLabel]="'Dochód [PLN]'"
+      [legendTitle]="'Legenda'"
+      [yAxisLabel]="'Miesiąc'"
+      [legend]="true"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [xAxis]="true"
+      [yAxis]="true"
+      [gradient]="true"
+      [scheme]="colorScheme">
+    </ngx-charts-bar-horizontal>
+  </div>
+</div>

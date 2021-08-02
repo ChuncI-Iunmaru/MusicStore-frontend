@@ -18,6 +18,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { RecommendationComponent } from './components/recommendation/recommendation.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginStatusComponent } from './components/login-status/login-status.component';
+import { NgxChartsModule }from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
   OKTA_CONFIG, OktaAuthGuard,
@@ -31,6 +33,7 @@ import { UserRecommendationsComponent } from './components/user-recommendations/
 import { BestsellerRecommendationsComponent } from './components/bestseller-recommendations/bestseller-recommendations.component';
 import {AuthGuardEmployeeService} from "./services/auth-guard-employee.service";
 import { CrudPageComponent } from './components/crud-page/crud-page.component';
+import { StatsComponent } from './components/stats/stats.component';
 
 
 const oktaConfig = Object.assign({
@@ -71,7 +74,8 @@ const routes: Routes = [
     UserPageComponent,
     UserRecommendationsComponent,
     BestsellerRecommendationsComponent,
-    CrudPageComponent
+    CrudPageComponent,
+    StatsComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -80,7 +84,9 @@ const routes: Routes = [
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    OktaAuthModule
+    OktaAuthModule,
+    BrowserAnimationsModule,
+    NgxChartsModule,
   ],
   providers: [AlbumService, CurrencyPipe, {provide: OKTA_CONFIG, useValue: oktaConfig}],
   bootstrap: [AppComponent]
