@@ -13,6 +13,7 @@
   </form>
   <hr>
   <h3>Miesięczna sprzedaż</h3>
+  <img *ngIf="salesData.length == 0" src="assets/images/spinner_grey.gif" class="img-responsive">
   <div *ngIf="salesData.length > 0">
     <ngx-charts-bar-vertical
       [view]="[1000,400]"
@@ -33,6 +34,7 @@
   <br>
   <h3>Miesięczne dochody</h3>
   <br>
+  <img *ngIf="profitsData.length == 0" src="assets/images/spinner_grey.gif" class="img-responsive">
   <div *ngIf="profitsData.length > 0">
     <ngx-charts-bar-horizontal
       [view]="[1000,400]"

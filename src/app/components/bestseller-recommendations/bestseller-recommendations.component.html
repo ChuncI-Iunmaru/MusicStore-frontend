@@ -1,5 +1,6 @@
 <div class="container-fluid">
   <!-- product looop -->
+  <img *ngIf="recommendations.length == 0" src="assets/images/spinner.gif" class="img-responsive">
   <div *ngFor="let tmp of recommendations">
     <div class="product-box">
       <div class="row">

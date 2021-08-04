@@ -19,7 +19,7 @@ export class StatsComponent implements OnInit {
   profitsData = [] as any;
   // @ts-ignore
   yearFormGroup: FormGroup;
-  years = [2019, 2020, 2021, 2020]
+  years = [2019, 2020, 2021, 2022]
 
   colorScheme = {
     domain: [
@@ -37,7 +37,7 @@ export class StatsComponent implements OnInit {
   ngOnInit(): void {
     this.yearFormGroup = this.formBuilder.group({
       yearInformation: this.formBuilder.group({
-        year: ['']})
+        year: [this.years[0]]})
     });
     this.handleYearChange();
   }

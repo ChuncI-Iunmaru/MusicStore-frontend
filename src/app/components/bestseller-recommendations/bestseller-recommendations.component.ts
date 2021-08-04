@@ -14,6 +14,7 @@ export class BestsellerRecommendationsComponent implements OnInit {
   constructor(private recService: RecommendationService) { }
 
   ngOnInit(): void {
+    this.recommendations = [];
     this.recService.getRecentBestsellers().subscribe(data => {
       console.log('Zmiana bestsellerów');
       console.log(data);
