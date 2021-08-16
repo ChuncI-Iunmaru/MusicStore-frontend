@@ -33,7 +33,6 @@ export class LoginStatusComponent implements OnInit {
         (res) => {
           // @ts-ignore
           this.userFullName = res.name;
-
           const email = res.email;
           console.log(res)
           this.storage.setItem('userEmail', JSON.stringify(email));
@@ -45,6 +44,12 @@ export class LoginStatusComponent implements OnInit {
             this.userDataService.employeeLoggedOut()
             this.isEmployee = false;
           }
+          this.userDataService.getUserIdByEmail(<string>email).subscribe(
+            data => {
+              console.log(data);
+              this.userDataService.customerSwitch(data);
+            }
+          );
         });
     }
   }
