@@ -13,8 +13,8 @@ export class RecommendationComponent implements OnInit {
 
   recommendations: AlbumWrapper[] = [];
   modes: string[] = [ 'Euclidean Distance on Genre',
-                      "Euclidean Distance on Subgenre",
-                      "Mixed euclid and artist",
+                      "Euclidean Similarity on genre & subgenre",
+                      "Mixed cosine similarity, artist & year",
                       "Cosine similarity on Genre & Subgenre"];
   currentMode: string = this.modes[0];
   // @ts-ignore
