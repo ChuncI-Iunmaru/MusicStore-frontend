@@ -11,7 +11,10 @@ import {RecommendationService} from "../../services/recommendation.service";
 export class UserRecommendationsComponent implements OnInit {
 
   recommendations: AlbumWrapper[] = [];
-  modes: string[] = [ 'Spearman with nearest-n neighborhood'];
+  modes: string[] = [ 'Spearman with nearest-n neighborhood',
+                      'Spearman with threshold neighborhood',
+                      'Pearson with nearest-n neighborhood',
+                      'Pearson with threshold neighborhood',];
   currentMode: string = this.modes[0];
   // @ts-ignore
   modePicker: FormGroup;
@@ -29,9 +32,28 @@ export class UserRecommendationsComponent implements OnInit {
   private handleRecommendations() {
     // Docelowo tu wyłuskać id zalogowenego usera/customera ze storage
     const currentUserId = 4;
+    this.recommendations = [];
     const modeIndex = this.modes.findIndex(mode => mode === this.currentMode);
     if (modeIndex === 0) {
-      this.recService.getDummyUserRecommendations(currentUserId).subscribe(data => {
+      this.recService.getSpearmanNearestNRecs(currentUserId).subscribe(data => {
+        console.log('Zmiana rekomendowanych');
+        console.log(data);
+        this.recommendations = data
+      });
+    } else if (modeIndex == 1) {
+      this.recService.getSpearmanThresholdRecs(currentUserId).subscribe(data => {
+        console.log('Zmiana rekomendowanych');
+        console.log(data);
+        this.recommendations = data
+      });
+    } else if (modeIndex == 2) {
+      this.recService.getPearsonNearestNRecs(currentUserId).subscribe(data => {
+        console.log('Zmiana rekomendowanych');
+        console.log(data);
+        this.recommendations = data
+      });
+    } else if (modeIndex == 3) {
+      this.recService.getPearsonThresholdRecs(currentUserId).subscribe(data => {
         console.log('Zmiana rekomendowanych');
         console.log(data);
         this.recommendations = data

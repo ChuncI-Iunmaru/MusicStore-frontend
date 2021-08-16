@@ -38,6 +38,22 @@ export class RecommendationService {
     return this.httpClient.get<AlbumWrapper[]>(`${this.baseUrl}/dummyUserRecs?id=${userId}&size=${this.size}`);
   }
 
+  getPearsonNearestNRecs(userId: number): Observable<AlbumWrapper[]> {
+    return this.httpClient.get<AlbumWrapper[]>(`${this.baseUrl}/pearsonNearest?id=${userId}&size=${this.size}`);
+  }
+
+  getPearsonThresholdRecs(userId: number): Observable<AlbumWrapper[]> {
+    return this.httpClient.get<AlbumWrapper[]>(`${this.baseUrl}/pearsonThreshold?id=${userId}&size=${this.size}`);
+  }
+
+  getSpearmanNearestNRecs(userId: number): Observable<AlbumWrapper[]> {
+    return this.httpClient.get<AlbumWrapper[]>(`${this.baseUrl}/spearmanNearest?id=${userId}&size=${this.size}`);
+  }
+
+  getSpearmanThresholdRecs(userId: number): Observable<AlbumWrapper[]> {
+    return this.httpClient.get<AlbumWrapper[]>(`${this.baseUrl}/spearmanThreshold?id=${userId}&size=${this.size}`);
+  }
+
   getRecentBestsellers(): Observable<AlbumWrapper[]> {
     return this.httpClient.get<AlbumWrapper[]>(`${this.baseUrl}/recentBestsellers?size=${this.size}`);
   }
