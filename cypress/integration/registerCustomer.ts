@@ -28,8 +28,3 @@ describe('register account', () => {
     cy.url().should('contain', '/products');
   });
 })
-
-// Logowanie jako pracownik
-// Logowanie jako kupiec
-// Wyszukiwanie przedmiotu i przejście do jego detali
-// Dodanie przedmiotu do koszyka, przejście do koszyka i przejście do zamówienia
